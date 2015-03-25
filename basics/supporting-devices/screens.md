@@ -5,7 +5,7 @@
 Android将设备屏幕归类为两种常规属性：尺寸和分辨率。你应该想到你的app会被安装在各种屏幕尺寸和分辨率的设备中。这样，你的app就应该包含一些可选资源，针对不同的屏幕尺寸和分辨率，来优化你的app外观。
 
 - 有4种普遍尺寸：小(small)，普通(normal)，大(large)，超大(xlarge)
-- 4种普遍分辨率：低精度(ldpi), 中精度(mdpi), 高精度(hdpi), 超高精度(xhdpi)
+- 4种普遍分辨率：低精度(ldpi), 中精度(mdpi), 高精度(hdpi), 超高精度(xhdpi)，自适应精度（nodpi）
 
 声明针对不同屏幕所用的layout和bitmap，你必须把这些可选资源放置在独立的目录中，与你适配不同语言时的做法类似。
 
@@ -98,10 +98,11 @@ MyProject/
             awesomeimage.png
         drawable-ldpi/
             awesomeimage.png
+        drawable-nodpi/
+            awesomeimage.png
 ```
-
+注：有时系统根据屏幕大小拉伸或缩放图片，此时会使图片变形，新建的drawable-nodpi中不会进行操作。推荐使用png，jpg 格式图片。
 任何时候，当你引用`@drawable/awesomeimage`时系统会根据屏幕的分辨率选择恰当的bitmap。
 
 > **Note**:低密度(ldpi)资源是非必要的，当你提供了hdpi的图像，系统会把hdpi的图像按比例缩小一半，去适配ldpi的屏幕。
-
 更多关于为app创建图标assets的信息和指导，详见[Iconography design](https://developer.android.com/design/style/iconography.html)。
